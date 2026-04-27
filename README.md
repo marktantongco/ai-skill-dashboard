@@ -10,6 +10,10 @@ A self-contained dashboard to manage OpenCode system prompts, skills, health che
 - **Auto-Sync**: Propagates system prompt (`AGENTS.md`) and dashboard to all git repos on version updates
 - **Online Access**: Deployed to GitHub Pages and Vercel for remote access
 
+## 🚀 Online Access
+- **GitHub Pages**: https://marktantongco.github.io/ai-skill-dashboard/dashboard.html
+- **Vercel Production**: https://ai-skill-dashboard-orcin.vercel.app
+
 ## 🚀 Installation
 ```bash
 git clone https://github.com/marktantongco/ai-skill-dashboard.git
@@ -38,7 +42,8 @@ Automatically deployed from main branch root. Access at:
 https://marktantongco.github.io/ai-skill-dashboard/dashboard.html
 
 ### Vercel
-Deployed with Vercel for global CDN access. Uses `AI_GATEWAY_API_KEY` for AI integrations.
+Deployed with Vercel for global CDN access. Uses `AI_GATEWAY_API_KEY` for AI integrations.  
+Production URL: https://ai-skill-dashboard-orcin.vercel.app
 
 ## 📂 Skills Included
 - `system-prompt-sync`: Auto-syncs `AGENTS.md` across all git repos
@@ -56,5 +61,5 @@ MIT License — free to use, modify, and distribute.
 ## 🔗 Links
 - GitHub Repo: https://github.com/marktantongco/ai-skill-dashboard
 - GitHub Pages: https://marktantongco.github.io/ai-skill-dashboard/dashboard.html
-- Vercel Deployment: (link generated after Vercel deploy)
+- Vercel Deployment: https://ai-skill-dashboard-orcin.vercel.app
 - OpenCode Docs: https://opencode.ai/docs
