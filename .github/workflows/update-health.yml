@@ -1,0 +1,26 @@
+name: Hourly Health Data Update
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Run every hour
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run health check
+        run: bash check-all-skills.sh
+
+      - name: Commit and push updated health data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add skill-health.json
+          git diff --quiet && echo "No changes to commit" || (git commit -m "Hourly health data update" && git push)

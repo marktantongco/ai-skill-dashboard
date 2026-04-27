@@ -1,8 +1,8 @@
 #!/bin/bash
 
 SKILLS_DIR="/workspace/skills"
-HEALTH_OUTPUT="/tmp/skill-health.json"
-WEB_OUTPUT="/workspace/skills/skill-health.json"
+HEALTH_OUTPUT="./skill-health.json"  # Repo root for live dashboard access
+WEB_OUTPUT="./skill-health.json"
 
 check_all_skills() {
   local json_entries=()
@@ -39,7 +39,6 @@ check_all_skills() {
 
   local json_content=$(printf "[\n  %s\n]\n" "$(IFS=$'\n'; echo "${json_entries[*]}" | sed 's/$/,/' | sed '$s/,$//')")
   echo "$json_content" > "$HEALTH_OUTPUT"
-  echo "$json_content" > "$WEB_OUTPUT"
   echo "Health check complete. Output: $HEALTH_OUTPUT"
 }
 

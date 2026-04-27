@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wrapper script to check all skills in /workspace/skills/
-# Runs the health check and outputs results
+# Runs the health check and outputs results to repo root
 
 SKILLS_DIR="/workspace/skills"
 STARTUP_CHECK="$SKILLS_DIR/system-prompt-sync/startup-check.sh"
@@ -13,9 +13,9 @@ fi
 
 bash "$STARTUP_CHECK"
 
-# Display results
-if [ -f "/tmp/skill-health.json" ]; then
+# Display results from repo root
+if [ -f "skill-health.json" ]; then
   echo ""
   echo "=== Skill Health Report ==="
-  cat /tmp/skill-health.json | python3 -m json.tool 2>/dev/null || cat /tmp/skill-health.json
+  cat skill-health.json | python3 -m json.tool 2>/dev/null || cat skill-health.json
 fi
