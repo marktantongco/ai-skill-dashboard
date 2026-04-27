@@ -18,8 +18,16 @@ jobs:
 
       - name: Run health check
         id: health
-        run: bash check-all-skills.sh
+        run: |
+          start_time=$(date +%s)
+          bash check-all-skills.sh
+          end_time=$(date +%s)
+          duration=$((end_time - start_time))
+          echo "duration=$duration" >> $GITHUB_OUTPUT
         continue-on-error: true
+
+      - name: Output Health Check Duration
+        run: echo "Health check took ${{ steps.health.outputs.duration }} seconds"
 
       - name: Commit and push updated health data
         if: success()
@@ -29,6 +37,17 @@ jobs:
           git add skill-health.json
           git diff --quiet && echo "No changes to commit" || (git commit -m "Hourly health data update" && git push)
 
+      - name: Update Performance Badges
+        if: always()
+        run: |
+          bash /workspace/skills/workflow-reviewer/generate-badges.sh || true
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git diff --quiet && echo "No badge changes" || (git commit -m "Update performance badges" && git push)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create issue on failure
         if: failure() && steps.health.outcome == 'failure'
         uses: actions/github-script@v7
@@ -36,7 +55,7 @@ jobs:
           script: |
             const date = new Date().toISOString().split('T')[0];
             const title = `Health Check Failed - ${date}`;
-            const body = `## Health check workflow failed\n\n**Run ID**: ${context.runId}\n**Time**: ${new Date().toISOString()}\n\nCheck the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`;
+            const body = `## Health check workflow failed\n\n**Run ID**: ${context.runId}\n**Time**: ${new Date().toISOString()}\n**Duration**: ${steps.health.outputs.duration} seconds\n\nCheck the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`;
             
             // Check if issue already exists for today
             const issues = await github.rest.issues.listForRepo({

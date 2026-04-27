@@ -4,6 +4,15 @@
 [![Health Update](https://img.shields.io/github/actions/workflow/status/marktantongco/ai-skill-dashboard/update-health.yml?label=Health%20Update)](https://github.com/marktantongco/ai-skill-dashboard/actions/workflows/update-health.yml)
 [![GitHub Pages](https://img.shields.io/website?url=https://marktantongco.github.io/ai-skill-dashboard/dashboard.html&label=GitHub%20Pages)](https://marktantongco.github.io/ai-skill-dashboard/dashboard.html)
 
+## Performance Metrics
+
+<!-- PERFORMANCE_BADGES_START -->
+![Deploy Time](https://img.shields.io/badge/Deploy%20Time-Unknown-lightgrey)
+![Health Check Time](https://img.shields.io/badge/Health%20Check-Unknown-lightgrey)
+<!-- PERFORMANCE_BADGES_END -->
+
+*Badges auto-update after each workflow run*
+
 A self-contained dashboard to manage OpenCode system prompts, skills, health checks, and automated syncing. Built to eliminate one-off work by turning repeat tasks into reusable skills.
 
 ## ✨ Features

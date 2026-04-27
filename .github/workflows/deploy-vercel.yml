@@ -15,7 +15,26 @@ jobs:
         run: npm install -g vercel
 
       - name: Deploy to Vercel Production
-        run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
+        id: deploy
+        run: |
+          start_time=$(date +%s)
+          vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
+          end_time=$(date +%s)
+          duration=$((end_time - start_time))
+          echo "duration=$duration" >> $GITHUB_OUTPUT
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Output Deploy Time
+        run: echo "Vercel deploy took ${{ steps.deploy.outputs.duration }} seconds"
+
+      - name: Update Performance Badges
+        run: |
+          bash /workspace/skills/workflow-reviewer/generate-badges.sh || true
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git diff --quiet && echo "No badge changes" || (git commit -m "Update performance badges" && git push)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
