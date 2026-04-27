@@ -7,8 +7,8 @@
 ## Performance Metrics
 
 <!-- PERFORMANCE_BADGES_START -->
-![Deploy Time](https://img.shields.io/badge/Deploy%20Time-Unknown-lightgrey)
-![Health Check Time](https://img.shields.io/badge/Health%20Check-Unknown-lightgrey)
+![Deploy Time](https://img.shields.io/badge/Deploy%20Time-32s-brightgreen)
+![Health Check Time](https://img.shields.io/badge/Health%20Check-5s-blue)
 <!-- PERFORMANCE_BADGES_END -->
 
 *Badges auto-update after each workflow run*
