@@ -1,5 +1,9 @@
 # AI Skill Dashboard for OpenCode
 
+[![Vercel Deploy](https://img.shields.io/github/actions/workflow/status/marktantongco/ai-skill-dashboard/deploy-vercel.yml?label=Vercel%20Deploy)](https://github.com/marktantongco/ai-skill-dashboard/actions/workflows/deploy-vercel.yml)
+[![Health Update](https://img.shields.io/github/actions/workflow/status/marktantongco/ai-skill-dashboard/update-health.yml?label=Health%20Update)](https://github.com/marktantongco/ai-skill-dashboard/actions/workflows/update-health.yml)
+[![GitHub Pages](https://img.shields.io/website?url=https://marktantongco.github.io/ai-skill-dashboard/dashboard.html&label=GitHub%20Pages)](https://marktantongco.github.io/ai-skill-dashboard/dashboard.html)
+
 A self-contained dashboard to manage OpenCode system prompts, skills, health checks, and automated syncing. Built to eliminate one-off work by turning repeat tasks into reusable skills.
 
 ## ✨ Features
