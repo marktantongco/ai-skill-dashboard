@@ -29,12 +29,13 @@ jobs:
       - name: Output Deploy Time
         run: echo "Vercel deploy took ${{ steps.deploy.outputs.duration }} seconds"
 
-      - name: Update Performance Badges
-        run: |
-          bash /workspace/skills/workflow-reviewer/generate-badges.sh || true
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add README.md
-          git diff --quiet && echo "No badge changes" || (git commit -m "Update performance badges" && git push)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Badge update disabled - script needs fixes
+      # - name: Update Performance Badges
+      #   run: |
+      #     bash /workspace/skills/workflow-reviewer/generate-badges.sh || true
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      #     git add README.md
+      #     git diff --quiet && echo "No badge changes" || (git commit -m "Update performance badges" && git push)
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

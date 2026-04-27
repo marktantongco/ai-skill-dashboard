@@ -37,16 +37,17 @@ jobs:
           git add skill-health.json
           git diff --quiet && echo "No changes to commit" || (git commit -m "Hourly health data update" && git push)
 
-      - name: Update Performance Badges
-        if: always()
-        run: |
-          bash /workspace/skills/workflow-reviewer/generate-badges.sh || true
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add README.md
-          git diff --quiet && echo "No badge changes" || (git commit -m "Update performance badges" && git push)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Badge update disabled - script needs fixes
+      # - name: Update Performance Badges
+      #   if: always()
+      #   run: |
+      #     bash /workspace/skills/workflow-reviewer/generate-badges.sh || true
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      #     git add README.md
+      #     git diff --quiet && echo "No badge changes" || (git commit -m "Update performance badges" && git push)
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create issue on failure
         if: failure() && steps.health.outcome == 'failure'
