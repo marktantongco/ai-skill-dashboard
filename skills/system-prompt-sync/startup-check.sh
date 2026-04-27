@@ -1,8 +1,7 @@
 #!/bin/bash
 
-SKILLS_DIR="/workspace/skills"
-HEALTH_OUTPUT="./skill-health.json"  # Repo root for live dashboard access
-WEB_OUTPUT="./skill-health.json"
+SKILLS_DIR="./skills"  # Relative to repo root
+HEALTH_OUTPUT="./skill-health.json"
 
 check_all_skills() {
   local json_entries=()

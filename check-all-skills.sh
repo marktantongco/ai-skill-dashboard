@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Wrapper script to check all skills in /workspace/skills/
+# Wrapper script to check all skills in ./skills/
 # Runs the health check and outputs results to repo root
 
-SKILLS_DIR="/workspace/skills"
+SKILLS_DIR="./skills"
 STARTUP_CHECK="$SKILLS_DIR/system-prompt-sync/startup-check.sh"
 
 if [ ! -f "$STARTUP_CHECK" ]; then
